@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Juice App</string>
+    <string name="load_error">An error has occurred</string>
+    <string name="retry">Retry</string>
+    <string name="toggle_theme">Toggle theme</string>
+    <string name="search">Search</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="close_icon">Close Icon</string>
+</resources>

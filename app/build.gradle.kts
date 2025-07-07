@@ -72,6 +72,9 @@ dependencies {
     // DataStore
     implementation(libs.androidx.datastore.preferences)
 
+    // SplashScreen
+    implementation(libs.androidx.core.splashscreen)
+
     testImplementation(libs.junit)
 
     // Truth
@@ -86,6 +89,9 @@ dependencies {
 
     // Paging
     testImplementation(libs.androidx.paging.common)
+
+    // Turbine
+    testImplementation(libs.turbine)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

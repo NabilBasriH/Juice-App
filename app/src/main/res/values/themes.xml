@@ -2,4 +2,14 @@
 <resources>
 
     <style name="Theme.JuiceApp" parent="android:Theme.Material.Light.NoActionBar" />
+    
+    <style name="Theme.JuiceApp.Splash" parent="Theme.SplashScreen">
+
+        <item name="windowSplashScreenBackground">@color/white</item>
+
+        <item name="windowSplashScreenAnimatedIcon">@drawable/juice_app_logo</item>
+
+        <item name="postSplashScreenTheme">@style/Theme.JuiceApp</item>
+
+    </style>
 </resources>

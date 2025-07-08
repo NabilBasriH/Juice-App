@@ -89,6 +89,8 @@ dependencies {
 
     // Paging
     testImplementation(libs.androidx.paging.common)
+    testImplementation(libs.androidx.paging.testing)
+
 
     // Turbine
     testImplementation(libs.turbine)

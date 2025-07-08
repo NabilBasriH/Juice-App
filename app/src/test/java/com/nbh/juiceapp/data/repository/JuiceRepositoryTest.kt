@@ -1,10 +1,9 @@
-package com.nbh.juiceapp.repository
+package com.nbh.juiceapp.data.repository
 
 import androidx.paging.PagingSource
 import com.google.common.truth.Truth.assertThat
 import com.nbh.juiceapp.data.JuiceApiService
 import com.nbh.juiceapp.data.JuicePagingSource
-import com.nbh.juiceapp.data.JuiceRepository
 import com.nbh.juiceapp.data.SearchJuicePagingSource
 import com.nbh.juiceapp.data.response.JuiceResponse
 import com.nbh.juiceapp.data.response.ResultResponse

@@ -4,25 +4,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.nbh.juiceapp.data.JuiceRepository
+import com.nbh.juiceapp.data.repository.JuiceRepository
 import com.nbh.juiceapp.presentation.home.model.JuiceModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
 class JuiceListViewModel @Inject constructor(juiceRepository: JuiceRepository) : ViewModel() {
-
     private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
 
@@ -35,7 +31,7 @@ class JuiceListViewModel @Inject constructor(juiceRepository: JuiceRepository) :
 
     @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
     val displayedJuices: Flow<PagingData<JuiceModel>> = _searchQuery
-        .debounce(300)
+        .debounce(400)
         .flatMapLatest { query ->
             if (query.isBlank() || query.length < 4) {
                 allJuices

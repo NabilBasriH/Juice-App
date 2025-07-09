@@ -1,0 +1,21 @@
+{
+  "count": 2,
+  "page": "1",
+  "page_count": 1,
+  "page_size": 20,
+  "products": [
+    {
+      "_id": "123",
+      "product_name": "Orange Juice",
+      "image_url": "orange_juice.jpg",
+      "ingredients_text_en": "Fresh orange juice"
+    },
+    {
+      "_id": "456",
+      "product_name": "Apple Juice",
+      "image_url": "apple_juice.jpg",
+      "ingredients_text_en": "Fresh apple juice"
+    }
+  ],
+  "skip": 0
+}

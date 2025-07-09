@@ -12,9 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ThemeViewModel @Inject constructor(
-    private val prefs: ThemePreferences
-) : ViewModel() {
+class ThemeViewModel @Inject constructor(private val prefs: ThemePreferences) : ViewModel() {
 
     private val _theme = MutableStateFlow(AppTheme.LIGHT)
     val theme: StateFlow<AppTheme> = _theme.asStateFlow()

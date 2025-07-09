@@ -1,4 +1,4 @@
-package com.nbh.juiceapp.prefs
+package com.nbh.juiceapp.data.prefs
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
@@ -6,8 +6,6 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.google.common.truth.Truth.assertThat
-import com.nbh.juiceapp.data.prefs.AppTheme
-import com.nbh.juiceapp.data.prefs.ThemePrefs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
@@ -20,33 +18,25 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
+import java.io.File
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class ThemePrefsTest {
 
     private lateinit var dataStore: DataStore<Preferences>
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private val testDispatcher = UnconfinedTestDispatcher()
-
     @get:Rule
     val tempFolder = TemporaryFolder()
 
-    @OptIn(ExperimentalCoroutinesApi::class)
+    private lateinit var testFile: File
+
     @Before
     fun setup() {
-        Dispatchers.setMain(testDispatcher)
-
-        val testFile = tempFolder.newFile("theme_prefs.preferences_pb")
+        testFile = tempFolder.newFile("theme_prefs_${System.currentTimeMillis()}.preferences_pb")
 
         dataStore = PreferenceDataStoreFactory.create(
             produceFile = { testFile }
         )
-    }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @After
-    fun tearDown() {
-        Dispatchers.resetMain()
     }
 
     @Test

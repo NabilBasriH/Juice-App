@@ -1,4 +1,4 @@
-package com.nbh.juiceapp.presentation.home.ui
+package com.nbh.juiceapp.presentation.home
 
 import androidx.paging.PagingData
 import com.google.common.truth.Truth.assertThat

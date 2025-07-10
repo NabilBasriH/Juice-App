@@ -47,7 +47,7 @@ class JuiceApiServiceTest {
     }
 
     @Test
-    fun `getJuices returns parsed ResultResponse`() = runTest {
+    fun getJuicesReturnsParsedResultResponse() = runTest {
         val response = juiceApiService.getJuices(page = 1, pageSize = 20)
 
         assertThat(response.count).isEqualTo(2)
@@ -56,7 +56,7 @@ class JuiceApiServiceTest {
     }
 
     @Test
-    fun `searchJuice returns parsed ResultResponse`() = runTest {
+    fun searchJuiceReturnsParsedResultResponse() = runTest {
         val response = juiceApiService.searchJuice(page = 1, pageSize = 20, query = "Juice")
 
         assertThat(response.count).isEqualTo(2)

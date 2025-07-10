@@ -38,13 +38,6 @@ class JuiceRepositoryTest {
         skip = 0
     )
 
-    private val expectedModel = JuiceModel(
-        id = "1",
-        name = "Tomato Juice",
-        image = "tomato_juice.jpg",
-        description = "Fresh tomato juice"
-    )
-
     @Before
     fun setup() {
         fakeApi = mock()
@@ -66,7 +59,7 @@ class JuiceRepositoryTest {
         )
 
         val expected = PagingSource.LoadResult.Page(
-            data = listOf(expectedModel),
+            data = listOf(juiceResponse),
             prevKey = null,
             nextKey = 2
         )
@@ -91,7 +84,7 @@ class JuiceRepositoryTest {
         )
 
         val expected = PagingSource.LoadResult.Page(
-            data = listOf(expectedModel),
+            data = listOf(juiceResponse),
             prevKey = null,
             nextKey = 2
         )

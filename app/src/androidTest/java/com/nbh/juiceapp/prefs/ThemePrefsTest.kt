@@ -1,4 +1,4 @@
-package com.nbh.juiceapp.data.prefs
+package com.nbh.juiceapp.prefs
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
@@ -6,21 +6,15 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import com.nbh.juiceapp.data.prefs.AppTheme
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
-import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import java.io.File
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class ThemePrefsTest {
 
     private lateinit var dataStore: DataStore<Preferences>
@@ -32,7 +26,7 @@ class ThemePrefsTest {
 
     @Before
     fun setup() {
-        testFile = tempFolder.newFile("theme_prefs_${System.currentTimeMillis()}.preferences_pb")
+        testFile = tempFolder.newFile("theme_prefs.preferences_pb")
 
         dataStore = PreferenceDataStoreFactory.create(
             produceFile = { testFile }
@@ -40,7 +34,7 @@ class ThemePrefsTest {
     }
 
     @Test
-    fun `save and read dark theme`() = runTest {
+    fun saveAndReadDarkTheme() = runTest {
         dataStore.edit { it[stringPreferencesKey("app_theme")] = "DARK"}
 
         val result = dataStore.data.first()[stringPreferencesKey("app_theme")]
@@ -49,7 +43,7 @@ class ThemePrefsTest {
     }
 
     @Test
-    fun `read returns light when no value is set`() = runTest {
+    fun readReturnsLightWhenNoValueIsSet() = runTest {
         val theme = dataStore.data.first()[stringPreferencesKey("app_theme")]
 
         val actual = theme?.let(AppTheme::valueOf) ?: AppTheme.LIGHT

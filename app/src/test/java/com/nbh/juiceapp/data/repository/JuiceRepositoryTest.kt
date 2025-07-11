@@ -2,12 +2,11 @@ package com.nbh.juiceapp.data.repository
 
 import androidx.paging.PagingSource
 import com.google.common.truth.Truth.assertThat
-import com.nbh.juiceapp.data.JuiceApiService
+import com.nbh.juiceapp.data.remote.JuiceApiService
 import com.nbh.juiceapp.data.paging.JuicePagingSource
 import com.nbh.juiceapp.data.paging.SearchJuicePagingSource
 import com.nbh.juiceapp.data.response.JuiceResponse
 import com.nbh.juiceapp.data.response.ResultResponse
-import com.nbh.juiceapp.presentation.home.model.JuiceModel
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test

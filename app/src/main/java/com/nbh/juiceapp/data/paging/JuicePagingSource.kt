@@ -2,10 +2,8 @@ package com.nbh.juiceapp.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.nbh.juiceapp.data.JuiceApiService
-import com.nbh.juiceapp.data.mapper.toJuiceModel
+import com.nbh.juiceapp.data.remote.JuiceApiService
 import com.nbh.juiceapp.data.response.JuiceResponse
-import com.nbh.juiceapp.presentation.home.model.JuiceModel
 import javax.inject.Inject
 
 class JuicePagingSource @Inject constructor(private val api: JuiceApiService) :

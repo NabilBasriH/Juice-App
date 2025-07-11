@@ -1,4 +1,4 @@
-package com.nbh.juiceapp.data
+package com.nbh.juiceapp.data.remote
 
 import com.google.common.truth.Truth.assertThat
 import com.nbh.juiceapp.utils.readJsonFromResources

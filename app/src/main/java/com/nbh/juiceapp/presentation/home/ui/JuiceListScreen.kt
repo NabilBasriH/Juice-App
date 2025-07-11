@@ -49,6 +49,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -323,13 +324,13 @@ private fun JuiceSearchBar(
 }
 
 @Composable
-private fun JuicesList(
+fun JuicesList(
     modifier: Modifier = Modifier,
     juices: LazyPagingItems<JuiceModel>,
     gridState: LazyGridState
 ) {
     LazyVerticalGrid(
-        modifier = modifier,
+        modifier = modifier.testTag("juices_list"),
         state = gridState,
         columns = GridCells.Fixed(count = 2),
         contentPadding = PaddingValues(6.dp)

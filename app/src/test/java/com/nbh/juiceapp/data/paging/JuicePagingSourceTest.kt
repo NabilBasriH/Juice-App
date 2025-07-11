@@ -2,7 +2,7 @@ package com.nbh.juiceapp.data.paging
 
 import androidx.paging.PagingSource
 import com.google.common.truth.Truth.assertThat
-import com.nbh.juiceapp.data.JuiceApiService
+import com.nbh.juiceapp.data.remote.JuiceApiService
 import com.nbh.juiceapp.utils.readJsonFromResources
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse

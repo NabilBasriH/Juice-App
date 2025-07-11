@@ -1,4 +1,4 @@
-package com.nbh.juiceapp.data
+package com.nbh.juiceapp.data.remote
 
 import com.nbh.juiceapp.data.response.ResultResponse
 import retrofit2.http.GET

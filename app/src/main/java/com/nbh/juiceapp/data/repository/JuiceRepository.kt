@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.nbh.juiceapp.data.JuiceApiService
+import com.nbh.juiceapp.data.remote.JuiceApiService
 import com.nbh.juiceapp.data.mapper.toJuiceModel
 import com.nbh.juiceapp.data.paging.JuicePagingSource
 import com.nbh.juiceapp.data.paging.SearchJuicePagingSource

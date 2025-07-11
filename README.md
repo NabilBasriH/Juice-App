@@ -6,10 +6,10 @@ A modern Android application that displays a list of juices and allows searching
 
 ## 🖼️ Screenshots
 
-<img src="screenshots/juice_screenshot00-portrait.png" width="250" /> &nbsp;&nbsp;&nbsp; 
-<img src="screenshots/juice_screenshot01-portrait.png" width="250" /> &nbsp;&nbsp;&nbsp; 
-<img src="screenshots/juice_screenshot02-portrait.png" width="250" /> &nbsp;&nbsp;&nbsp; 
-<img src="screenshots/juice_screenshot03-portrait.png" width="250" />
+<img src="screenshots/juice_screenshot_00.png" width="250" /> &nbsp;&nbsp;&nbsp; 
+<img src="screenshots/juice_screenshot_01.png" width="250" /> &nbsp;&nbsp;&nbsp; 
+<img src="screenshots/juice_screenshot_02.png" width="250" /> &nbsp;&nbsp;&nbsp; 
+<img src="screenshots/juice_screenshot_03.png" width="250" />
 
 ---
 

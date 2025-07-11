@@ -1,14 +1,12 @@
-package com.nbh.juiceapp.repository
+package com.nbh.juiceapp.data.repository
 
 import androidx.paging.PagingSource
 import com.google.common.truth.Truth.assertThat
-import com.nbh.juiceapp.data.JuiceApiService
-import com.nbh.juiceapp.data.JuicePagingSource
-import com.nbh.juiceapp.data.JuiceRepository
-import com.nbh.juiceapp.data.SearchJuicePagingSource
+import com.nbh.juiceapp.data.remote.JuiceApiService
+import com.nbh.juiceapp.data.paging.JuicePagingSource
+import com.nbh.juiceapp.data.paging.SearchJuicePagingSource
 import com.nbh.juiceapp.data.response.JuiceResponse
 import com.nbh.juiceapp.data.response.ResultResponse
-import com.nbh.juiceapp.presentation.home.model.JuiceModel
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
@@ -39,13 +37,6 @@ class JuiceRepositoryTest {
         skip = 0
     )
 
-    private val expectedModel = JuiceModel(
-        id = "1",
-        name = "Tomato Juice",
-        image = "tomato_juice.jpg",
-        description = "Fresh tomato juice"
-    )
-
     @Before
     fun setup() {
         fakeApi = mock()
@@ -54,7 +45,6 @@ class JuiceRepositoryTest {
 
     @Test
     fun `getAllJuices return paging juice data`() = runTest {
-
         whenever(fakeApi.getJuices(PAGE, PAGE_SIZE)).thenReturn(resultResponse)
 
         val pagingSource = JuicePagingSource(fakeApi)
@@ -68,7 +58,7 @@ class JuiceRepositoryTest {
         )
 
         val expected = PagingSource.LoadResult.Page(
-            data = listOf(expectedModel),
+            data = listOf(juiceResponse),
             prevKey = null,
             nextKey = 2
         )
@@ -93,7 +83,7 @@ class JuiceRepositoryTest {
         )
 
         val expected = PagingSource.LoadResult.Page(
-            data = listOf(expectedModel),
+            data = listOf(juiceResponse),
             prevKey = null,
             nextKey = 2
         )

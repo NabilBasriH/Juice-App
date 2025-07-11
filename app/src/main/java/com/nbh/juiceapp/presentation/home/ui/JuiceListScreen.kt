@@ -38,6 +38,7 @@ import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -48,6 +49,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -81,7 +83,12 @@ fun JuiceListScreen(
     val isLoadingWithQuery =
         juices.loadState.refresh is LoadState.Loading && juices.itemCount == 0 && searchQuery.length > 3
     val isInitialLoading = juices.loadState.refresh is LoadState.Loading && juices.itemCount == 0
+    val isLoaded = juices.loadState.refresh is LoadState.NotLoading && juices.itemCount > 0
     val isError = juices.loadState.refresh is LoadState.Error
+
+    LaunchedEffect(isLoaded) {
+        if (isLoaded) juiceListViewModel.setLoaded()
+    }
 
     when {
         isLoadingWithQuery ->
@@ -93,6 +100,7 @@ fun JuiceListScreen(
             )
 
         isInitialLoading -> JuiceInitialLoading()
+
         isError ->
             ErrorScreen(
                 modifier = modifier,
@@ -316,13 +324,13 @@ private fun JuiceSearchBar(
 }
 
 @Composable
-private fun JuicesList(
+fun JuicesList(
     modifier: Modifier = Modifier,
     juices: LazyPagingItems<JuiceModel>,
     gridState: LazyGridState
 ) {
     LazyVerticalGrid(
-        modifier = modifier,
+        modifier = modifier.testTag("juices_list"),
         state = gridState,
         columns = GridCells.Fixed(count = 2),
         contentPadding = PaddingValues(6.dp)

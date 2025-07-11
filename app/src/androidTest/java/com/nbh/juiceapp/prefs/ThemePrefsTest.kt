@@ -7,50 +7,34 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.google.common.truth.Truth.assertThat
 import com.nbh.juiceapp.data.prefs.AppTheme
-import com.nbh.juiceapp.data.prefs.ThemePrefs
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
-import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
+import java.io.File
 
 class ThemePrefsTest {
 
     private lateinit var dataStore: DataStore<Preferences>
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private val testDispatcher = UnconfinedTestDispatcher()
-
     @get:Rule
     val tempFolder = TemporaryFolder()
 
-    @OptIn(ExperimentalCoroutinesApi::class)
+    private lateinit var testFile: File
+
     @Before
     fun setup() {
-        Dispatchers.setMain(testDispatcher)
-
-        val testFile = tempFolder.newFile("theme_prefs.preferences_pb")
+        testFile = tempFolder.newFile("theme_prefs.preferences_pb")
 
         dataStore = PreferenceDataStoreFactory.create(
             produceFile = { testFile }
         )
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @After
-    fun tearDown() {
-        Dispatchers.resetMain()
-    }
-
     @Test
-    fun `save and read dark theme`() = runTest {
+    fun saveAndReadDarkTheme() = runTest {
         dataStore.edit { it[stringPreferencesKey("app_theme")] = "DARK"}
 
         val result = dataStore.data.first()[stringPreferencesKey("app_theme")]
@@ -59,7 +43,7 @@ class ThemePrefsTest {
     }
 
     @Test
-    fun `read returns light when no value is set`() = runTest {
+    fun readReturnsLightWhenNoValueIsSet() = runTest {
         val theme = dataStore.data.first()[stringPreferencesKey("app_theme")]
 
         val actual = theme?.let(AppTheme::valueOf) ?: AppTheme.LIGHT

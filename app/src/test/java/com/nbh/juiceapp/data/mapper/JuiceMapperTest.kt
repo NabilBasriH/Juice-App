@@ -1,7 +1,6 @@
-package com.nbh.juiceapp.mapper
+package com.nbh.juiceapp.data.mapper
 
 import com.google.common.truth.Truth.assertThat
-import com.nbh.juiceapp.data.mapper.toJuiceModel
 import com.nbh.juiceapp.data.response.JuiceResponse
 import org.junit.Test
 

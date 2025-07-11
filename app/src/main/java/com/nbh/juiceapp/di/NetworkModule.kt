@@ -1,6 +1,6 @@
 package com.nbh.juiceapp.di
 
-import com.nbh.juiceapp.data.JuiceApiService
+import com.nbh.juiceapp.data.remote.JuiceApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

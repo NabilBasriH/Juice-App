@@ -2,9 +2,10 @@
     <string name="app_name">Juice App</string>
     <string name="load_error">An error has occurred</string>
     <string name="retry">Retry</string>
-    <string name="toggle_theme">Toggle theme</string>
     <string name="search">Search</string>
     <string name="search_icon">Search Icon</string>
     <string name="close_icon">Close Icon</string>
     <string name="juice_app_logo">Juice App Logo</string>
+    <string name="change_to_dark_theme">Switch to dark theme</string>
+    <string name="change_to_light_theme">Switch to light theme</string>
 </resources>

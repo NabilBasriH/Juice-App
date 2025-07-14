@@ -52,6 +52,8 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -407,10 +409,15 @@ private fun ThemeToggleButton(
     onToggleTheme: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val description = stringResource(
+        if (isDark) R.string.change_to_light_theme
+        else R.string.change_to_dark_theme
+    )
     IconToggleButton(
         checked = isDark,
         onCheckedChange = { onToggleTheme() },
         modifier = modifier
+            .semantics { contentDescription = description }
             .padding(bottom = 45.dp, end = 28.dp)
             .size(40.dp)
             .clip(CircleShape)
@@ -422,7 +429,7 @@ private fun ThemeToggleButton(
         ) { dark ->
             Icon(
                 painter = painterResource(if (dark) R.drawable.sun else R.drawable.moon),
-                contentDescription = stringResource(R.string.toggle_theme),
+                contentDescription = null,
                 tint = MaterialTheme.colorScheme.onPrimary,
                 modifier = Modifier.size(24.dp)
             )
